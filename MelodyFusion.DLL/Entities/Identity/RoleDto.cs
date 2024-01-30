@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Identity;
 
 namespace PetHospital.Data.Entities.Identity;
 
-public class Role : IdentityRole
+public class RoleDto : IdentityRole
 {
-    public Role() : base() { } 
+    public RoleDto() : base() { } 
 
-    public Role(string roleName) : base(roleName) { }
+    public RoleDto(string roleName) : base(roleName) { }
 
     public virtual List<UserRole> UserRoles { get; set; }
 }

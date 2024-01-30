@@ -6,7 +6,7 @@ using PetHospital.Data.Entities.Identity;
 
 namespace MelodyFusion.DLL
 {
-    public class ApplicationDbContext : IdentityDbContext<User, Role, string, IdentityUserClaim<string>, UserRole,
+    public class ApplicationDbContext : IdentityDbContext<UserDto, RoleDto, string, IdentityUserClaim<string>, UserRole,
         IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)

@@ -14,13 +14,13 @@ namespace MelodyFusion.DLL
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<User, Role>()
-                .AddUserStore<UserStore<User, Role, ApplicationDbContext, string, IdentityUserClaim<string>, UserRole,
+            services.AddIdentity<UserDto, RoleDto>()
+                .AddUserStore<UserStore<UserDto, RoleDto, ApplicationDbContext, string, IdentityUserClaim<string>, UserRole,
                     IdentityUserLogin<string>, IdentityUserToken<string>, IdentityRoleClaim<string>>>()
-                .AddRoleStore<RoleStore<Role, ApplicationDbContext, string, UserRole, IdentityRoleClaim<string>>>()
-                .AddSignInManager<SignInManager<User>>()
-                .AddRoleManager<RoleManager<Role>>()
-                .AddUserManager<UserManager<User>>();
+                .AddRoleStore<RoleStore<RoleDto, ApplicationDbContext, string, UserRole, IdentityRoleClaim<string>>>()
+                .AddSignInManager<SignInManager<UserDto>>()
+                .AddRoleManager<RoleManager<RoleDto>>()
+                .AddUserManager<UserManager<UserDto>>();
 
             return services;
         }

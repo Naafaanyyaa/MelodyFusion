@@ -113,7 +113,7 @@ namespace MelodyFusion.DLL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("PetHospital.Data.Entities.Identity.Role", b =>
+            modelBuilder.Entity("PetHospital.Data.Entities.Identity.RoleDto", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -140,7 +140,7 @@ namespace MelodyFusion.DLL.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
-            modelBuilder.Entity("PetHospital.Data.Entities.Identity.User", b =>
+            modelBuilder.Entity("PetHospital.Data.Entities.Identity.UserDto", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -233,7 +233,7 @@ namespace MelodyFusion.DLL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("PetHospital.Data.Entities.Identity.Role", null)
+                    b.HasOne("PetHospital.Data.Entities.Identity.RoleDto", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -242,7 +242,7 @@ namespace MelodyFusion.DLL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("PetHospital.Data.Entities.Identity.User", null)
+                    b.HasOne("PetHospital.Data.Entities.Identity.UserDto", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -251,7 +251,7 @@ namespace MelodyFusion.DLL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("PetHospital.Data.Entities.Identity.User", null)
+                    b.HasOne("PetHospital.Data.Entities.Identity.UserDto", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -260,7 +260,7 @@ namespace MelodyFusion.DLL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("PetHospital.Data.Entities.Identity.User", null)
+                    b.HasOne("PetHospital.Data.Entities.Identity.UserDto", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -269,29 +269,29 @@ namespace MelodyFusion.DLL.Migrations
 
             modelBuilder.Entity("PetHospital.Data.Entities.Identity.UserRole", b =>
                 {
-                    b.HasOne("PetHospital.Data.Entities.Identity.Role", "Role")
+                    b.HasOne("PetHospital.Data.Entities.Identity.RoleDto", "RoleDto")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PetHospital.Data.Entities.Identity.User", "User")
+                    b.HasOne("PetHospital.Data.Entities.Identity.UserDto", "UserDto")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Role");
+                    b.Navigation("RoleDto");
 
-                    b.Navigation("User");
+                    b.Navigation("UserDto");
                 });
 
-            modelBuilder.Entity("PetHospital.Data.Entities.Identity.Role", b =>
+            modelBuilder.Entity("PetHospital.Data.Entities.Identity.RoleDto", b =>
                 {
                     b.Navigation("UserRoles");
                 });
 
-            modelBuilder.Entity("PetHospital.Data.Entities.Identity.User", b =>
+            modelBuilder.Entity("PetHospital.Data.Entities.Identity.UserDto", b =>
                 {
                     b.Navigation("UserRoles");
                 });
