@@ -1,6 +1,10 @@
-﻿using MelodyFusion.DLL;
+﻿using MelodyFusion.BLL.Infrastructure;
+using MelodyFusion.BLL.Interfaces;
+using MelodyFusion.BLL.Services;
+using MelodyFusion.DLL;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace MelodyFusion.BLL
 {
@@ -10,6 +14,16 @@ namespace MelodyFusion.BLL
             IConfiguration configuration)
         {
             services.AddDataLayer(configuration);
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddScoped<IRoleInitializer, RoleInitializer>();
+            services.AddScoped<IRegistrationService, RegistrationService>();
+            services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAdminService, AdminService>();
+            services.AddTransient<IBraintreeService, BraintreeService>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<JwtHandler>();
 
             return services;
         }

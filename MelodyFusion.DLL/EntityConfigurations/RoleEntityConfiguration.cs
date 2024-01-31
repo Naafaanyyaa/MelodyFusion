@@ -4,12 +4,12 @@ using PetHospital.Data.Entities.Identity;
 
 namespace MelodyFusion.DLL.EntityConfigurations
 {
-    public class RoleEntityConfiguration : IEntityTypeConfiguration<Role>
+    public class RoleEntityConfiguration : IEntityTypeConfiguration<RoleDto>
     {
-        public void Configure(EntityTypeBuilder<Role> builder)
+        public void Configure(EntityTypeBuilder<RoleDto> builder)
         {
             builder.HasMany(r => r.UserRoles)
-                .WithOne(ru => ru.Role)
+                .WithOne(ru => ru.RoleDto)
                 .HasForeignKey(x => x.RoleId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
