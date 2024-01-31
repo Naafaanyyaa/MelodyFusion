@@ -30,21 +30,5 @@ namespace MelodyFusion.BLL.Services
         {
             return CreateGateway();
         }
-
-        public async Task<Result<Transaction>> CreateTransaction(PaymentRequest requestModel)
-        {
-            var gateway = GetGateway();
-            var request = new TransactionRequest
-            {
-                Amount = requestModel.Amount,
-                PaymentMethodNonce = requestModel.PaymentMethodNonce,
-                Options = new TransactionOptionsRequest
-                {
-                    SubmitForSettlement = true
-                }
-            };
-
-            Result<Transaction> result = await gateway.Transaction.SaleAsync(request);
-        }
     }
 }
