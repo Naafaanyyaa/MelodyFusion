@@ -21,6 +21,8 @@ namespace MelodyFusion.BLL
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAdminService, AdminService>();
+            services.AddTransient<IBraintreeService, BraintreeService>();
+            services.AddScoped<IPaymentService, PaymentService>();
             services.AddScoped<JwtHandler>();
 
             return services;

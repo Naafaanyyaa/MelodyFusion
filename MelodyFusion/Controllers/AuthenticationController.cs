@@ -41,17 +41,9 @@ namespace MelodyFusion.Controllers
             return StatusCode(StatusCodes.Status201Created, result);
         }
 
-        [HttpGet("login")]
-        [AllowAnonymous]
-        public IActionResult Login()
-        {
-            var redirectUri = Url.Action("GoogleLogin", "YourControllerName", null, Request.Scheme, Request.Host.Value);
-            var props = new AuthenticationProperties { RedirectUri = "authentication/signin-google" };
-            return Challenge(props, GoogleDefaults.AuthenticationScheme);
-        }
         [HttpGet("signin-google")]
         [AllowAnonymous]
-        public async Task<IActionResult> GoogleLogin()
+        public async Task<IActionResult> GoogleLoginCallback()
         {
             var response = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             if (response.Principal == null) return BadRequest();

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using MelodyFusion.DLL.Interfaces;
+using MelodyFusion.DLL.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +23,9 @@ namespace MelodyFusion.DLL
                 .AddSignInManager<SignInManager<UserDto>>()
                 .AddRoleManager<RoleManager<RoleDto>>()
                 .AddUserManager<UserManager<UserDto>>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 
             return services;
         }
