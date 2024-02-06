@@ -1,11 +1,11 @@
-﻿using MelodyFusion.DLL.Interfaces;
+﻿using MelodyFusion.DLL.Entities.Identity;
+using MelodyFusion.DLL.Interfaces;
 using MelodyFusion.DLL.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PetHospital.Data.Entities.Identity;
 
 namespace MelodyFusion.DLL
 {
@@ -26,6 +26,7 @@ namespace MelodyFusion.DLL
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+            services.AddScoped<IPhotoRepository, PhotoRepository>();
 
             return services;
         }

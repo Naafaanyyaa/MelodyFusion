@@ -3,11 +3,11 @@ using MelodyFusion.BLL.Exceptions;
 using MelodyFusion.BLL.Interfaces;
 using MelodyFusion.BLL.Models.Request;
 using MelodyFusion.BLL.Models.Response;
+using MelodyFusion.DLL.Entities.Identity;
 using MelodyFusion.DLL.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using PetHospital.Data.Entities.Identity;
 
 namespace MelodyFusion.BLL.Services
 {

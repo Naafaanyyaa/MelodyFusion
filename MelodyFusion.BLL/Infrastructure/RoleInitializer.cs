@@ -1,6 +1,6 @@
 ﻿using MelodyFusion.BLL.Interfaces;
+using MelodyFusion.DLL.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
-using PetHospital.Data.Entities.Identity;
 
 namespace MelodyFusion.BLL.Infrastructure
 {
