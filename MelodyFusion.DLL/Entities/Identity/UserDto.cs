@@ -1,7 +1,6 @@
-using MelodyFusion.DLL.Entities;
 using Microsoft.AspNetCore.Identity;
 
-namespace PetHospital.Data.Entities.Identity;
+namespace MelodyFusion.DLL.Entities.Identity;
 
 public class UserDto : IdentityUser
 {
@@ -9,5 +8,6 @@ public class UserDto : IdentityUser
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
     public virtual List<UserRole> UserRoles { get; set; } = new List<UserRole>();
-    public virtual List<SubscriptionDto> Subscription { get; set; } = new List<SubscriptionDto>();
+    public virtual List<SubscriptionDto>? Subscription { get; set; }
+    public virtual PhotoDto? Photo { get; set; }
 }

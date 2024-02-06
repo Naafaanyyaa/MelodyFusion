@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MelodyFusion.DLL.Entities.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PetHospital.Data.Entities.Identity;
 
 namespace MelodyFusion.DLL.EntityConfigurations
 {

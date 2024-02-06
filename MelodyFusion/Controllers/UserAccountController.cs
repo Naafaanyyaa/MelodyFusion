@@ -59,5 +59,15 @@ namespace MelodyFusion.Controllers
             var result = await _userService.UpdateAsync(userId, userRequest);
             return StatusCode(StatusCodes.Status200OK, result);
         }
+
+        [HttpPut("[action]")]
+        [Authorize]
+        [ProducesResponseType(typeof(IEnumerable<PhotoResponse>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> ChangeAvatar()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+            var result = await _userService.ChangeAvatar(Request.Form.Files, userId);
+            return StatusCode(StatusCodes.Status200OK, result);
+        }
     }
 }

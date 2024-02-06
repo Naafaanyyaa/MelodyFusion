@@ -1,5 +1,6 @@
 ﻿using MelodyFusion.BLL.Models.Request;
 using MelodyFusion.BLL.Models.Response;
+using Microsoft.AspNetCore.Http;
 
 namespace MelodyFusion.BLL.Interfaces
 {
@@ -9,5 +10,6 @@ namespace MelodyFusion.BLL.Interfaces
         Task<UserResponse> UpdateAsync(string userId, UserRequest userRequest);
         Task DeleteAsync(string userId);
         Task<UserResponse> ChangePasswordAsync(string userId, ChangePasswordRequest passwordRequest);
+        Task<PhotoResponse> ChangeAvatar(IFormFileCollection files, string userId);
     }
 }

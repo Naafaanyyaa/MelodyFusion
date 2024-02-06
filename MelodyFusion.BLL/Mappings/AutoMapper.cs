@@ -3,7 +3,7 @@ using Braintree;
 using MelodyFusion.BLL.Models.Request;
 using MelodyFusion.BLL.Models.Response;
 using MelodyFusion.DLL.Entities;
-using PetHospital.Data.Entities.Identity;
+using MelodyFusion.DLL.Entities.Identity;
 
 namespace MelodyFusion.BLL.Mappings
 {
@@ -19,6 +19,8 @@ namespace MelodyFusion.BLL.Mappings
             CreateMap<SubscriptionDto, SubscriptionResponse>();
             CreateMap<Result<Transaction>, SubscriptionDto>()
                 .ForMember(x => x.Amount, o => o.MapFrom(s => s.Transaction.Amount));
+            CreateMap<PhotoDto, PhotoResponse>();
+            CreateMap<PhotoDto, PhotoResponse>();
         }
     }
 }

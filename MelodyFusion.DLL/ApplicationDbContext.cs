@@ -1,9 +1,9 @@
 ﻿using MelodyFusion.DLL.Entities;
+using MelodyFusion.DLL.Entities.Identity;
 using MelodyFusion.DLL.EntityConfigurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PetHospital.Data.Entities.Identity;
 
 namespace MelodyFusion.DLL
 {
@@ -11,6 +11,7 @@ namespace MelodyFusion.DLL
         IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         public DbSet<SubscriptionDto> Subscription { get; set; }
+        public DbSet<PhotoDto> Photo{ get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -24,6 +25,7 @@ namespace MelodyFusion.DLL
             builder.ApplyConfiguration(new RoleEntityConfiguration());
             builder.ApplyConfiguration(new UserEntityConfiguration());
             builder.ApplyConfiguration(new SubscriptionEntityConfiguration());
+            builder.ApplyConfiguration(new PhotoEntityConfiguration());
         }
     }
 }

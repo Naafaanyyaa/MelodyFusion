@@ -2,9 +2,9 @@
 using MelodyFusion.BLL.Exceptions;
 using MelodyFusion.BLL.Interfaces;
 using MelodyFusion.BLL.Models.Response;
+using MelodyFusion.DLL.Entities.Identity;
 using MelodyFusion.DLL.Enums;
 using Microsoft.AspNetCore.Identity;
-using PetHospital.Data.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace MelodyFusion.BLL.Services

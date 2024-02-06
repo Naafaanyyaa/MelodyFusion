@@ -1,11 +1,10 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using MelodyFusion.BLL.Infrastructure;
 using MelodyFusion.BLL.Interfaces;
 using MelodyFusion.BLL.Models.Request;
 using MelodyFusion.BLL.Models.Response;
+using MelodyFusion.DLL.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
-using PetHospital.Data.Entities.Identity;
 
 namespace MelodyFusion.BLL.Services
 {

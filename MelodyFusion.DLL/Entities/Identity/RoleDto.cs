@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace PetHospital.Data.Entities.Identity;
+namespace MelodyFusion.DLL.Entities.Identity;
 
 public class RoleDto : IdentityRole
 {
