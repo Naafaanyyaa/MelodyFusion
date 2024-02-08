@@ -1,5 +1,5 @@
-﻿using MelodyFusion.DLL.Entities.Identity;
-using PetHospital.Data.Entities.Abstract;
+﻿using MelodyFusion.DLL.Entities.Abstract;
+using MelodyFusion.DLL.Entities.Identity;
 
 namespace MelodyFusion.DLL.Entities
 {

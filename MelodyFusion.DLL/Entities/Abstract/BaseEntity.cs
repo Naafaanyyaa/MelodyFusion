@@ -1,4 +1,4 @@
-namespace PetHospital.Data.Entities.Abstract;
+namespace MelodyFusion.DLL.Entities.Abstract;
 
 public class BaseEntity
 {

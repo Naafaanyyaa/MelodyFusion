@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using PetHospital.Data.Entities.Abstract;
+using MelodyFusion.DLL.Entities.Abstract;
 
 namespace MelodyFusion.DLL.Interfaces
 {

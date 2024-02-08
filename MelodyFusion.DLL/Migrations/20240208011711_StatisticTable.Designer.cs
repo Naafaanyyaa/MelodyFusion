@@ -4,6 +4,7 @@ using MelodyFusion.DLL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MelodyFusion.DLL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240208011711_StatisticTable")]
+    partial class StatisticTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +45,8 @@ namespace MelodyFusion.DLL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("AuthenticationStatistic");
                 });
@@ -311,8 +315,8 @@ namespace MelodyFusion.DLL.Migrations
             modelBuilder.Entity("MelodyFusion.DLL.Entities.AuthenticationStatisticDto", b =>
                 {
                     b.HasOne("MelodyFusion.DLL.Entities.Identity.UserDto", "User")
-                        .WithMany("AuthenticationStatistic")
-                        .HasForeignKey("UserId")
+                        .WithOne("AuthenticationStatistic")
+                        .HasForeignKey("MelodyFusion.DLL.Entities.AuthenticationStatisticDto", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

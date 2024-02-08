@@ -1,17 +1,16 @@
 ﻿using MelodyFusion.DLL.Entities;
-using MelodyFusion.DLL.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MelodyFusion.DLL.EntityConfigurations
 {
-    public class PhotoEntityConfiguration : IEntityTypeConfiguration<PhotoDto>
+    public class AuthenticationStatisticEntityConfiguration : IEntityTypeConfiguration<AuthenticationStatisticDto>
     {
-        public void Configure(EntityTypeBuilder<PhotoDto> builder)
+        public void Configure(EntityTypeBuilder<AuthenticationStatisticDto> builder)
         {
             builder.HasOne(x => x.User)
-                .WithOne(p => p.Photo)
-                .HasForeignKey<PhotoDto>(u => u.UserId)
+                .WithMany(x => x.AuthenticationStatistic)
+                .HasForeignKey(u => u.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

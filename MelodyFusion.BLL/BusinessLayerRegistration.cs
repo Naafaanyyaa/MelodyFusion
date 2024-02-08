@@ -24,6 +24,7 @@ namespace MelodyFusion.BLL
             services.AddTransient<IBraintreeService, BraintreeService>();
             services.AddScoped<IPaymentService, PaymentService>();
             services.AddScoped<IAzureBlobService, AzureBlobService>();
+            services.AddScoped<IStatisticService, StatisticService>();
             services.AddScoped<JwtHandler>();
 
             return services;
