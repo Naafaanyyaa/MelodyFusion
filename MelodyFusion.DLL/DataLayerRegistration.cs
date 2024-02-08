@@ -27,6 +27,7 @@ namespace MelodyFusion.DLL
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
             services.AddScoped<IPhotoRepository, PhotoRepository>();
+            services.AddScoped<IAuthenticationStatisticRepository, AuthenticationStatisticRepository>();
 
             return services;
         }

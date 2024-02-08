@@ -1,20 +1,21 @@
-﻿using MelodyFusion.DLL.Entities;
+﻿
+using MelodyFusion.DLL.Entities;
 using MelodyFusion.DLL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace MelodyFusion.DLL.Repositories
 {
-    public class PhotoRepository : Repository<PhotoDto>, IPhotoRepository
+    public  class AuthenticationStatisticRepository : Repository<AuthenticationStatisticDto>, IAuthenticationStatisticRepository
     {
-        public PhotoRepository(ApplicationDbContext context, ILogger<SubscriptionRepository> logger) : base(context)
+        private readonly ILogger<AuthenticationStatisticRepository> _logger;
+
+        public AuthenticationStatisticRepository(ApplicationDbContext context, ILogger<AuthenticationStatisticRepository> logger) : base(context)
         {
             _logger = logger;
         }
 
-        private readonly ILogger<SubscriptionRepository> _logger;
-
-        public override async Task<PhotoDto> AddAsync(PhotoDto entity)
+        public override async Task<AuthenticationStatisticDto> AddAsync(AuthenticationStatisticDto entity)
         {
             await using var transaction = await _context.Database.BeginTransactionAsync();
             try
@@ -28,24 +29,24 @@ namespace MelodyFusion.DLL.Repositories
             catch (Exception e)
             {
                 await transaction.RollbackAsync();
-                _logger.LogError("Error while creating photo: {EMessage}", e.Message);
+                _logger.LogError("Error while creating statistic: {EMessage}", e.Message);
             }
 
-            return new PhotoDto();
+            return new AuthenticationStatisticDto();
         }
 
-        public override Task<PhotoDto?> GetByIdAsync(string id)
+        public override Task<AuthenticationStatisticDto?> GetByIdAsync(string id)
         {
-            return _context.Photo.AsNoTracking()
+            return _context.AuthenticationStatistic.AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
-        public override async Task UpdateAsync(PhotoDto entity)
+        public override async Task UpdateAsync(AuthenticationStatisticDto entity)
         {
 
             await using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                _context.Photo.Update(entity);
+                _context.AuthenticationStatistic.Update(entity);
                 _context.Entry(entity).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
@@ -54,7 +55,7 @@ namespace MelodyFusion.DLL.Repositories
             catch (Exception e)
             {
                 await transaction.RollbackAsync();
-                _logger.LogError("Error while updating photo: {EMessage}", e.Message);
+                _logger.LogError("Error while updating statistic: {EMessage}", e.Message);
             }
         }
     }

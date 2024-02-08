@@ -18,6 +18,7 @@ namespace MelodyFusion.BLL.Infrastructure
         public void InitializeIdentityData()
         {
             RegisterRoleAsync(CustomRoles.UserRole).Wait();
+            RegisterRoleAsync(CustomRoles.AdminRole).Wait();
         }
 
         private async Task<RoleDto> RegisterRoleAsync(string roleName)

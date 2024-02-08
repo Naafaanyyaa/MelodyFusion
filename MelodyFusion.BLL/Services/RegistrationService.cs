@@ -3,8 +3,10 @@ using MelodyFusion.BLL.Exceptions;
 using MelodyFusion.BLL.Interfaces;
 using MelodyFusion.BLL.Models.Request;
 using MelodyFusion.BLL.Models.Response;
+using MelodyFusion.DLL.Entities;
 using MelodyFusion.DLL.Entities.Identity;
 using MelodyFusion.DLL.Enums;
+using MelodyFusion.DLL.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -16,12 +18,14 @@ namespace MelodyFusion.BLL.Services
         private readonly IMapper _mapper;
         private readonly UserManager<UserDto> _userManager;
         private readonly ILogger<RegistrationService> _logger;
+        private readonly IAuthenticationStatisticRepository _authenticationStatisticRepository;
 
-        public RegistrationService(IMapper mapper, UserManager<UserDto> userManager, ILogger<RegistrationService> logger)
+        public RegistrationService(IMapper mapper, UserManager<UserDto> userManager, IAuthenticationStatisticRepository authenticationStatisticRepository,ILogger<RegistrationService> logger)
         {
             _mapper = mapper;
             _userManager = userManager;
             _logger = logger;
+            _authenticationStatisticRepository = authenticationStatisticRepository;
         }
 
         public async Task<RegistrationResponse> Registration(RegistrationRequest request)
@@ -56,6 +60,8 @@ namespace MelodyFusion.BLL.Services
                 throw new Exception(identityResult.Errors.ToArray().ToString());
 
             _logger.LogInformation("User {UserId} has been successfully registered", user.Id);
+
+            await _authenticationStatisticRepository.AddAsync(new AuthenticationStatisticDto(false, user.Id));
 
             var result = _mapper.Map<UserDto, RegistrationResponse>(user);
 

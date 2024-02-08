@@ -9,6 +9,7 @@ using MelodyFusion.DLL.Entities.Identity;
 using MelodyFusion.DLL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
@@ -33,7 +34,10 @@ namespace MelodyFusion.BLL.Services
 
         public async Task<UserResponse> GetUserInfoAsync(string userId)
         {
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.Users
+                .Include(u => u.Subscription)
+                .Include(u => u.Photo)
+                .FirstOrDefaultAsync(u => u.Id == userId);
 
             if (user == null)
             {

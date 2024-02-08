@@ -12,6 +12,7 @@ namespace MelodyFusion.DLL
     {
         public DbSet<SubscriptionDto> Subscription { get; set; }
         public DbSet<PhotoDto> Photo{ get; set; }
+        public DbSet<AuthenticationStatisticDto> AuthenticationStatistic { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -26,6 +27,7 @@ namespace MelodyFusion.DLL
             builder.ApplyConfiguration(new UserEntityConfiguration());
             builder.ApplyConfiguration(new SubscriptionEntityConfiguration());
             builder.ApplyConfiguration(new PhotoEntityConfiguration());
+            builder.ApplyConfiguration(new AuthenticationStatisticEntityConfiguration());
         }
     }
 }

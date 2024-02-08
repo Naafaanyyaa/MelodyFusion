@@ -2,7 +2,6 @@
 using MelodyFusion.BLL.Models.Request;
 using MelodyFusion.BLL.Models.Response;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
