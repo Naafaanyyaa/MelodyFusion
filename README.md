@@ -14,6 +14,8 @@ The objective of this project is to leverage the .NET Core framework to develop 
 List the ready features here:
 * Registration and authentication via Google
 * Payment via Braintree
+* Azure SQL database
+* Azure blob storage
 
 ## Technologies
 Project is created with:
