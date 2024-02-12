@@ -4,7 +4,6 @@ using MelodyFusion.DLL.Interfaces;
 using System.Linq.Expressions;
 using MelodyFusion.DLL.Entities;
 using MelodyFusion.BLL.Models.Response.Statistic;
-using Braintree;
 
 namespace MelodyFusion.BLL.Services
 {

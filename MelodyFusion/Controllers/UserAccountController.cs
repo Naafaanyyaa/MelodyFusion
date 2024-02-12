@@ -8,6 +8,9 @@ using System.Security.Claims;
 
 namespace MelodyFusion.Controllers
 {
+    /// <summary>
+    /// Controller for handling user account operations.
+    /// </summary>
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
@@ -15,11 +18,19 @@ namespace MelodyFusion.Controllers
     {
         private readonly IUserService _userService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UserAccountController"/> class.
+        /// </summary>
+        /// <param name="userService">The service for user account operations.</param>
         public UserAccountController(IUserService userService)
         {
             _userService = userService;
         }
 
+        /// <summary>
+        /// Retrieves user information.
+        /// </summary>
+        /// <returns>An IActionResult representing the user information.</returns>
         [HttpGet("[action]")]
         [Authorize]
         [ProducesResponseType(typeof(IEnumerable<UserResponse>), StatusCodes.Status200OK)]
@@ -30,6 +41,11 @@ namespace MelodyFusion.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Updates user password.
+        /// </summary>
+        /// <param name="newPassword">The new password.</param>
+        /// <returns>An IActionResult representing the result of password update.</returns>
         [HttpPatch("[action]")]
         [Authorize]
         [ProducesResponseType(typeof(IEnumerable<UserResponse>), StatusCodes.Status200OK)]
@@ -40,6 +56,10 @@ namespace MelodyFusion.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Deletes user account.
+        /// </summary>
+        /// <returns>An IActionResult representing the result of account deletion.</returns>
         [HttpDelete("[action]")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -50,6 +70,11 @@ namespace MelodyFusion.Controllers
             return StatusCode(StatusCodes.Status200OK);
         }
 
+        /// <summary>
+        /// Updates user information.
+        /// </summary>
+        /// <param name="userRequest">The request containing updated user information.</param>
+        /// <returns>An IActionResult representing the result of user information update.</returns>
         [HttpPut("[action]")]
         [Authorize]
         [ProducesResponseType(typeof(IEnumerable<UserResponse>), StatusCodes.Status200OK)]
@@ -60,6 +85,10 @@ namespace MelodyFusion.Controllers
             return StatusCode(StatusCodes.Status200OK, result);
         }
 
+        /// <summary>
+        /// Changes user avatar.
+        /// </summary>
+        /// <returns>An IActionResult representing the result of avatar change.</returns>
         [HttpPut("[action]")]
         [Authorize]
         [ProducesResponseType(typeof(IEnumerable<PhotoResponse>), StatusCodes.Status200OK)]

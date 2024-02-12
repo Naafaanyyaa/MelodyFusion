@@ -1,5 +1,4 @@
-﻿
-using MelodyFusion.DLL.Entities;
+﻿using MelodyFusion.DLL.Entities;
 using MelodyFusion.DLL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

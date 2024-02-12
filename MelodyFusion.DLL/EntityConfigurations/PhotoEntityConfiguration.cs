@@ -1,5 +1,4 @@
 ﻿using MelodyFusion.DLL.Entities;
-using MelodyFusion.DLL.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

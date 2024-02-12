@@ -1,6 +1,4 @@
 ﻿using MelodyFusion.BLL.Exceptions;
-using Microsoft.Extensions.Localization;
-using Microsoft.VisualBasic;
 using ILogger = Serilog.ILogger;
 
 namespace MelodyFusion.Middleware;

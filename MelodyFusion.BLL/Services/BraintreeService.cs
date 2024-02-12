@@ -1,6 +1,5 @@
 ﻿using Braintree;
 using MelodyFusion.BLL.Interfaces;
-using MelodyFusion.BLL.Models.Request;
 using Microsoft.Extensions.Configuration;
 
 namespace MelodyFusion.BLL.Services

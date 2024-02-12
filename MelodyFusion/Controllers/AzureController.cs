@@ -1,7 +1,4 @@
 ﻿using MelodyFusion.BLL.Interfaces;
-using MelodyFusion.BLL.Models.Response;
-using MelodyFusion.BLL.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
