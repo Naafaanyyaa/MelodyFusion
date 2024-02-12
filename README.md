@@ -22,12 +22,14 @@ Project is created with:
 * .NET Core 7
 	
 ## Setup
-To run this project, install it locally using npm:
-```
-$ cd ../lorem
-$ npm install
-$ npm start
-```
+To install and run the Music Recommendation System locally, follow these steps:
+
+1. Clone the repository: `git clone <repository-url>`
+2. Navigate to the project directory: `cd music-recommendation-system`
+3. Install dependencies: `dotnet restore`
+4. Configure Google OAuth credentials and Braintree API keys in the appropriate configuration files.
+5. Build the project: `dotnet build`
+6. Run the application: `dotnet run`
 
 ## Project Status
 Project is: in progress
