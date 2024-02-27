@@ -10,6 +10,10 @@ using MelodyFusion.DLL.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Security.Policy;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
+using System.Web;
+using static System.Net.WebRequestMethods;
 
 namespace MelodyFusion.BLL.Services
 {
@@ -19,12 +23,18 @@ namespace MelodyFusion.BLL.Services
         private readonly UserManager<UserDto> _userManager;
         private readonly ILogger<RegistrationService> _logger;
         private readonly IAuthenticationStatisticRepository _authenticationStatisticRepository;
+        private readonly IEmailSender _emailSender;
 
-        public RegistrationService(IMapper mapper, UserManager<UserDto> userManager, IAuthenticationStatisticRepository authenticationStatisticRepository,ILogger<RegistrationService> logger)
+        public RegistrationService(IMapper mapper, 
+            UserManager<UserDto> userManager, 
+            IAuthenticationStatisticRepository authenticationStatisticRepository,
+            ILogger<RegistrationService> logger, 
+            IEmailSender emailSender)
         {
             _mapper = mapper;
             _userManager = userManager;
             _logger = logger;
+            _emailSender = emailSender;
             _authenticationStatisticRepository = authenticationStatisticRepository;
         }
 
@@ -61,11 +71,24 @@ namespace MelodyFusion.BLL.Services
 
             _logger.LogInformation("User {UserId} has been successfully registered", user.Id);
 
+            await GenerateEmailConfirmationTokenAsync(user);
+
             await _authenticationStatisticRepository.AddAsync(new AuthenticationStatisticDto(false, user.Id));
 
             var result = _mapper.Map<UserDto, RegistrationResponse>(user);
 
             return result;
+        }
+
+        private async Task GenerateEmailConfirmationTokenAsync(UserDto user)
+        {
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+            var tokenHtmlVersion = HttpUtility.UrlEncode(token);
+
+            var confirmationLink = $"https://localhost:7293/api/Authentication/mail-confirmation?token={tokenHtmlVersion}&email={user.Email}";
+
+            await _emailSender.SendEmailAsync(user.Email!, "Confirmation email link", $"Please follow by this link to confirm your mail: \n{confirmationLink}");
         }
     }
 }
