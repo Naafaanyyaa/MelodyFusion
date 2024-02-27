@@ -25,6 +25,8 @@ namespace MelodyFusion.BLL
             services.AddScoped<IPaymentService, PaymentService>();
             services.AddScoped<IAzureBlobService, AzureBlobService>();
             services.AddScoped<IStatisticService, StatisticService>();
+            services.AddScoped<IEmailSender, EmailSenderService>();
+            services.AddScoped<IConfirmationEmailService, ConfirmEmailService>();
             services.AddScoped<JwtHandler>();
 
             return services;

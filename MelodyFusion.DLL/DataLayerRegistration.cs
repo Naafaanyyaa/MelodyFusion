@@ -16,13 +16,23 @@ namespace MelodyFusion.DLL
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<UserDto, RoleDto>()
+            services.AddIdentity<UserDto, RoleDto>(options =>
+                {
+                    options.Password.RequiredLength = 10;
+                    options.Password.RequireDigit = true;
+                    options.Password.RequireUppercase = true;
+                    options.Password.RequireLowercase = true;
+                    options.Password.RequireUppercase = false;
+                    options.User.RequireUniqueEmail = true;
+                    options.SignIn.RequireConfirmedEmail = true;
+                })
                 .AddUserStore<UserStore<UserDto, RoleDto, ApplicationDbContext, string, IdentityUserClaim<string>, UserRole,
                     IdentityUserLogin<string>, IdentityUserToken<string>, IdentityRoleClaim<string>>>()
                 .AddRoleStore<RoleStore<RoleDto, ApplicationDbContext, string, UserRole, IdentityRoleClaim<string>>>()
                 .AddSignInManager<SignInManager<UserDto>>()
                 .AddRoleManager<RoleManager<RoleDto>>()
-                .AddUserManager<UserManager<UserDto>>();
+                .AddUserManager<UserManager<UserDto>>()
+                .AddDefaultTokenProviders(); // Добавьте эту строку для регистрации стандартных провайдеров токенов;
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();

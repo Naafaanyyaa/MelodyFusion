@@ -18,16 +18,18 @@ namespace MelodyFusion.Controllers
     {
         private readonly IRegistrationService _registrationService;
         private readonly ILoginService _loginService;
+        private readonly IConfirmationEmailService _confirmationEmailService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationController"/> class.
         /// </summary>
         /// <param name="registrationService">The service for user registration.</param>
         /// <param name="loginService">The service for user login.</param>
-        public AuthenticationController(IRegistrationService registrationService, ILoginService loginService)
+        public AuthenticationController(IRegistrationService registrationService, ILoginService loginService, IConfirmationEmailService confirmationEmailService)
         {
             _registrationService = registrationService;
             _loginService = loginService;
+            _confirmationEmailService = confirmationEmailService;
         }
 
         /// <summary>
@@ -56,6 +58,25 @@ namespace MelodyFusion.Controllers
         {
             var result = await _loginService.Login(request);
             return StatusCode(StatusCodes.Status201Created, result);
+        }
+
+        /// <summary>
+        /// Confirm user's email address using the provided token.
+        /// </summary>
+        /// <param name="token">The email confirmation token.</param>
+        /// <param name="email">The email address to confirm.</param>
+        /// <returns>
+        /// 200 OK if email confirmation is successful;
+        /// 400 Bad Request if email confirmation fails.
+        /// </returns>
+        [HttpGet("mail-confirmation")]
+        [AllowAnonymous]
+        [ProducesResponseType( StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> EmailConfirmation(string token, string email)
+        {
+            var result = await _confirmationEmailService.ConfirmEmail(token, email);
+            return result.Succeeded ? Ok() : BadRequest();
         }
 
         /// <summary>
