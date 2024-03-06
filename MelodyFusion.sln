@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelodyFusion", "MelodyFusion\MelodyFusion.csproj", "{12DC7F47-A57E-4747-B86B-D6BCD689E4A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MelodyFusion", "MelodyFusion\MelodyFusion.csproj", "{12DC7F47-A57E-4747-B86B-D6BCD689E4A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelodyFusion.BLL", "MelodyFusion.BLL\MelodyFusion.BLL.csproj", "{6E7F8866-E845-47D1-A075-9357D99D2541}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MelodyFusion.BLL", "MelodyFusion.BLL\MelodyFusion.BLL.csproj", "{6E7F8866-E845-47D1-A075-9357D99D2541}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelodyFusion.DLL", "MelodyFusion.DLL\MelodyFusion.DLL.csproj", "{A3337E88-801B-45D9-A4C5-0E48C6FDFB8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MelodyFusion.DLL", "MelodyFusion.DLL\MelodyFusion.DLL.csproj", "{A3337E88-801B-45D9-A4C5-0E48C6FDFB8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelodyFusion.UnitTests", "MelodyFusion.UnitTests\MelodyFusion.UnitTests.csproj", "{4F822195-7BA2-496B-9624-C0E6F922E980}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A3337E88-801B-45D9-A4C5-0E48C6FDFB8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3337E88-801B-45D9-A4C5-0E48C6FDFB8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3337E88-801B-45D9-A4C5-0E48C6FDFB8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F822195-7BA2-496B-9624-C0E6F922E980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F822195-7BA2-496B-9624-C0E6F922E980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F822195-7BA2-496B-9624-C0E6F922E980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F822195-7BA2-496B-9624-C0E6F922E980}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
